@@ -1,0 +1,50 @@
+{
+  "movies": [
+    {
+      "id": "m1",
+      "title": "Avatar: Fuego y ceniza",
+      "tmdb_id": 83533,
+      "year": 2025,
+      "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/TU_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+    },
+    {
+      "id": "m2",
+      "title": "El León de Narnia",
+      "tmdb_id": 12345,
+      "year": 2024,
+      "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/OTRO_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+    }
+  ],
+  "series": [
+    {
+      "id": "s1",
+      "title": "Breaking Bad",
+      "tmdb_id": 1396,
+      "year": 2008,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "Piloto",
+              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP1_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            },
+            {
+              "title": "Gato en la azotea",
+              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP2_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            }
+          ]
+        },
+        {
+          "title": "Temporada 2",
+          "episodes": [
+            {
+              "title": "Sin salida",
+              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP3_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
