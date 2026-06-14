@@ -11,6 +11,7 @@
    TOKENS
 ═══════════════════════════════════════ */
 :root{
+  --zoom:1.18;   /* ← CAMBIA ESTE VALOR PARA TU TV (1.0=normal, 1.2=grande, 1.4=muy grande) */
   --bg:#0a0a0f;
   --s1:#12111a;
   --s2:#1c1929;
@@ -29,6 +30,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow:hidden;}
+/* ZOOM GLOBAL TV */
+#L-home, #L-login{ zoom: var(--zoom); }
+/* GLOBAL BACKGROUND (backdrop dinámico) */
+#globalBg{position:fixed;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s,background-image .8s;pointer-events:none;}
+#globalBg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 120% 80% at 50% 0%,rgba(10,10,15,.55) 0%,rgba(10,10,15,.92) 60%,var(--bg) 100%);}
+#L-home{position:relative;z-index:1;}
 
 /* ═══════════════════════════════════════
    CAPAS
@@ -130,6 +137,7 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 .progress-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.15);border-radius:0 0 var(--radius) var(--radius);overflow:hidden;}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:inherit;}
 .card-badge{position:absolute;top:8px;left:8px;background:rgba(124,58,237,.85);border-radius:5px;padding:3px 7px;font-size:.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px;}
+.card-rating{position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,.75);border-radius:5px;padding:3px 7px;font-size:.72rem;font-weight:600;color:var(--gold);}
 
 /* GRID (cuando se expande una sección) */
 .grid-view{display:none;padding:0 24px;gap:16px;flex-wrap:wrap;}
@@ -147,23 +155,30 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 
 /* EPISODE LIST */
 .ep-list{display:flex;flex-direction:column;gap:10px;}
-.ep-item{display:flex;align-items:center;gap:14px;background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px;cursor:pointer;transition:background .2s,border-color .2s;}
+.ep-item{display:flex;align-items:center;gap:14px;background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:10px 14px;cursor:pointer;transition:background .2s,border-color .2s;}
 .ep-item:hover{background:var(--s3);border-color:rgba(124,58,237,.3);}
-.ep-num{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:var(--accent2);min-width:28px;}
+.ep-thumb{width:100px;height:58px;border-radius:7px;object-fit:cover;background:var(--s3);flex-shrink:0;border:1px solid rgba(255,255,255,.07);}
+.ep-thumb-ph{width:100px;height:58px;border-radius:7px;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.3rem;border:1px solid rgba(255,255,255,.07);}
+.ep-num{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--accent2);min-width:22px;}
 .ep-info{flex:1;}
-.ep-title{font-size:.9rem;font-weight:500;}
-.ep-play{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:7px;padding:9px 16px;color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;}
+.ep-title{font-size:.88rem;font-weight:500;}
+.ep-overview{font-size:.78rem;color:var(--muted);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.ep-play{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:7px;padding:9px 16px;color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap;flex-shrink:0;}
 
 /* ═══════════════════════════════════════
    MODAL DETALLE
 ═══════════════════════════════════════ */
 #L-detail{display:none;position:fixed;inset:0;z-index:50;background:rgba(10,10,15,.85);align-items:flex-end;justify-content:center;}
 #L-detail.on{display:flex;}
-.det-panel{background:var(--s1);border-radius:20px 20px 0 0;border-top:1px solid rgba(124,58,237,.25);width:100%;max-width:780px;max-height:90vh;overflow-y:auto;padding:28px 28px 40px;}
+.det-panel{background:var(--s1);border-radius:20px 20px 0 0;border-top:1px solid rgba(124,58,237,.25);width:100%;max-width:780px;max-height:90vh;overflow-y:auto;padding:0 0 40px;}
+.det-backdrop{width:100%;height:200px;background-size:cover;background-position:center 20%;border-radius:20px 20px 0 0;flex-shrink:0;position:relative;}
+.det-backdrop::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,15,.1) 0%,rgba(18,17,26,.98) 100%);border-radius:20px 20px 0 0;}
+.det-inner{padding:0 28px 0;}
 .det-panel::-webkit-scrollbar{width:3px;}
 .det-panel::-webkit-scrollbar-thumb{background:var(--s3);}
-.det-close{float:right;background:var(--s2);border:none;border-radius:8px;padding:7px 12px;color:var(--muted);cursor:pointer;font-size:1rem;margin-top:-4px;transition:color .2s;}
-.det-close:hover{color:var(--text);}
+.det-close{position:absolute;top:14px;right:14px;background:rgba(10,10,15,.7);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 12px;color:var(--text);cursor:pointer;font-size:.9rem;z-index:5;transition:background .2s;}
+.det-close:hover{background:rgba(255,255,255,.12);}
+.det-inner{position:relative;padding:0 24px 0;}
 .det-top{display:flex;gap:20px;margin-bottom:22px;clear:both;}
 .det-poster{width:110px;height:165px;border-radius:10px;object-fit:cover;flex-shrink:0;background:var(--s2);}
 .det-info{flex:1;}
@@ -220,6 +235,7 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 </style>
 </head>
 <body>
+<div id="globalBg"></div>
 
 <!-- ═══ LOGIN ═══ -->
 <div id="L-login" class="layer on">
@@ -518,6 +534,10 @@ function makeCard(item){
   const div = document.createElement('div');
   div.className = 'card';
   div.id = 'card_'+item.id;
+  div.addEventListener('mouseenter', ()=>{
+    if(div.dataset.backdrop) setGlobalBg(div.dataset.backdrop);
+  });
+  div.addEventListener('mouseleave', ()=>{ clearGlobalBg(); });
   div.innerHTML = `
     <div class="card-img" onclick="openDetail('${item.id}','${item._type}')">
       <div class="card-placeholder">🎬</div>
@@ -546,14 +566,27 @@ async function enrichCard(item){
   const img = td.poster_path ? imgUrl(td.poster_path) : '';
   const ph = card.querySelector('.card-placeholder');
   if(img && ph){
+    const el = card.querySelector('.card-img');
     const i = document.createElement('img');
     i.src = img; i.alt = item.title;
-    i.onload = ()=>ph.replaceWith(i);
+    i.onload = ()=>{ ph.replaceWith(i); };
   }
   const yr = card.querySelector('.card-year');
   if(yr && !item.year){
     yr.textContent = (td.release_date||td.first_air_date||'').slice(0,4);
   }
+  // Rating badge
+  if(td.vote_average && td.vote_average > 0){
+    const ci = card.querySelector('.card-img');
+    if(ci && !ci.querySelector('.card-rating')){
+      const rb = document.createElement('div');
+      rb.className = 'card-rating';
+      rb.textContent = '★ '+td.vote_average.toFixed(1);
+      ci.appendChild(rb);
+    }
+  }
+  // Store backdrop for hover
+  if(td.backdrop_path) card.dataset.backdrop = imgUrl(td.backdrop_path,'w780');
 }
 
 /* ═══════════════════════════════════════
@@ -563,93 +596,147 @@ async function openDetail(id, type){
   const item = type==='movie' ? S.data.movies.find(x=>x.id===id) : S.data.series.find(x=>x.id===id);
   if(!item) return;
   const panel = $('detPanel');
-  panel.innerHTML = `<button class="det-close" onclick="closeDetail()">✕ Cerrar</button><div style="text-align:center;padding:40px"><div class="spinner-ring" style="margin:auto"></div></div>`;
+  panel.innerHTML = `<div style="text-align:center;padding:60px"><div class="spinner-ring" style="margin:auto"></div></div>`;
   $('L-detail').classList.add('on');
-  const td = item.tmdb_id ? await fetchTmdb(type==='movie'?'movie':'tv', item.tmdb_id) : null;
-  const poster = td?.poster_path ? imgUrl(td.poster_path,'w342') : '';
-  const backdrop = td?.backdrop_path ? imgUrl(td.backdrop_path,'w780') : '';
-  const desc = td?.overview || 'Sin descripción disponible.';
-  const rating = td?.vote_average ? td.vote_average.toFixed(1) : '';
-  const year = item.year || (td?.release_date||td?.first_air_date||'').slice(0,4);
-  const genres = (td?.genres||[]).map(g=>`<span class="det-chip">${g.name}</span>`).join('');
-  const favBtn = `<button class="btn-fav ${isFav(id)?'saved':''}" id="detFavBtn" onclick="toggleFav('${id}','${item.title.replace(/'/g,"\\'")}');document.getElementById('detFavBtn').className='btn-fav'+(isFav('${id}')?' saved':'');document.getElementById('detFavBtn').textContent=isFav('${id}')?'★ Guardado':'☆ Favorito'">
+  const tmdbType = type==='movie' ? 'movie' : 'tv';
+  const td = item.tmdb_id ? await fetchTmdb(tmdbType, item.tmdb_id) : null;
+  const poster   = td?.poster_path   ? imgUrl(td.poster_path,  'w342') : '';
+  const backdrop = td?.backdrop_path ? imgUrl(td.backdrop_path,'w1280') : '';
+  const desc     = td?.overview || 'Sin descripción disponible.';
+  const rating   = td?.vote_average  ? td.vote_average.toFixed(1) : '';
+  const year     = item.year || (td?.release_date||td?.first_air_date||'').slice(0,4);
+  const genres   = (td?.genres||[]).map(g=>`<span class="det-chip">${g.name}</span>`).join('');
+
+  // Update global background
+  if(backdrop) setGlobalBg(backdrop);
+
+  const favBtn = `<button class="btn-fav ${isFav(id)?'saved':''}" id="detFavBtn"
+    onclick="toggleFav('${id}','${item.title.replace(/'/g,"\'")}');
+    this.className='btn-fav'+(isFav('${id}')?' saved':'');
+    this.textContent=isFav('${id}')?'★ Guardado':'☆ Favorito'">
     ${isFav(id)?'★ Guardado':'☆ Favorito'}
   </button>`;
 
   let body = '';
+  const bdStyle = backdrop ? `background-image:url(${backdrop})` : 'background:var(--s3)';
+
   if(type==='movie'){
     const runtime = td?.runtime ? `${td.runtime} min` : '';
     body = `
-      <div class="det-top">
-        ${poster?`<img class="det-poster" src="${poster}" alt="${item.title}">`:''}
-        <div class="det-info">
-          <div class="det-title">${item.title}</div>
-          <div class="det-meta">
-            ${year?`<span class="det-chip">${year}</span>`:''}
-            ${runtime?`<span class="det-chip">${runtime}</span>`:''}
-            ${rating?`<span class="det-chip accent">★ ${rating}</span>`:''}
-            ${genres}
-          </div>
-          <div class="det-desc">${desc}</div>
-          <div class="det-actions">
-            <button class="btn-play" onclick="playItem('${id}','movie');closeDetail()">▶ Reproducir</button>
-            ${favBtn}
+      <div class="det-backdrop" style="${bdStyle}"></div>
+      <div class="det-inner">
+        <div class="det-top">
+          ${poster?`<img class="det-poster" src="${poster}" alt="${item.title}">`:''}
+          <div class="det-info">
+            <div class="det-title">${item.title}</div>
+            <div class="det-meta">
+              ${year?`<span class="det-chip">${year}</span>`:''}
+              ${runtime?`<span class="det-chip">${runtime}</span>`:''}
+              ${rating?`<span class="det-chip accent">★ ${rating}</span>`:''}
+              ${genres}
+            </div>
+            <div class="det-desc">${desc}</div>
+            <div class="det-actions">
+              <button class="btn-play" onclick="playItem('${id}','movie');closeDetail()">▶ Reproducir</button>
+              ${favBtn}
+            </div>
           </div>
         </div>
+        <button class="det-close" onclick="closeDetail()">✕</button>
       </div>`;
   } else {
-    // Series con temporadas y episodios
     const seasons = item.seasons || [];
-    const seasonTabs = seasons.map((s,i)=>`<button class="season-tab ${i===0?'on':''}" onclick="showSeason('${id}',${i})">${s.title||'Temporada '+(i+1)}</button>`).join('');
-    const firstEps = (seasons[0]?.episodes||[]).map((ep,ei)=>`
-      <div class="ep-item" onclick="playEpisode('${id}',0,${ei})">
-        <span class="ep-num">${ei+1}</span>
-        <div class="ep-info"><div class="ep-title">${ep.title||'Episodio '+(ei+1)}</div></div>
-        <button class="ep-play" onclick="event.stopPropagation();playEpisode('${id}',0,${ei})">▶</button>
-      </div>`).join('');
+    const seasonTabs = seasons.map((s,i)=>`<button class="season-tab ${i===0?'on':''}" onclick="showSeason('${id}',${i},${item.tmdb_id||'null'})">${s.title||'Temporada '+(i+1)}</button>`).join('');
+    const tmdbSeason1Eps = item.tmdb_id ? await fetchTmdbSeason(item.tmdb_id, 1) : [];
+    const firstEps = buildEpList(item, 0, tmdbSeason1Eps);
     body = `
-      <div class="det-top">
-        ${poster?`<img class="det-poster" src="${poster}" alt="${item.title}">`:''}
-        <div class="det-info">
-          <div class="det-title">${item.title}</div>
-          <div class="det-meta">
-            ${year?`<span class="det-chip">${year}</span>`:''}
-            ${rating?`<span class="det-chip accent">★ ${rating}</span>`:''}
-            <span class="det-chip">${seasons.length} Temporada${seasons.length>1?'s':''}</span>
-            ${genres}
-          </div>
-          <div class="det-desc">${desc}</div>
-          <div class="det-actions">
-            ${favBtn}
+      <div class="det-backdrop" style="${bdStyle}"></div>
+      <div class="det-inner">
+        <div class="det-top">
+          ${poster?`<img class="det-poster" src="${poster}" alt="${item.title}">`:''}
+          <div class="det-info">
+            <div class="det-title">${item.title}</div>
+            <div class="det-meta">
+              ${year?`<span class="det-chip">${year}</span>`:''}
+              ${rating?`<span class="det-chip accent">★ ${rating}</span>`:''}
+              <span class="det-chip">${seasons.length} Temporada${seasons.length>1?'s':''}</span>
+              ${genres}
+            </div>
+            <div class="det-desc">${desc}</div>
+            <div class="det-actions">${favBtn}</div>
           </div>
         </div>
-      </div>
-      <div class="det-body">
-        <div class="season-tabs" id="seasonTabs_${id}">${seasonTabs}</div>
-        <div class="ep-list" id="epList_${id}">${firstEps}</div>
+        <div class="det-body">
+          <div class="season-tabs" id="seasonTabs_${id}">${seasonTabs}</div>
+          <div class="ep-list" id="epList_${id}">${firstEps}</div>
+        </div>
+        <button class="det-close" onclick="closeDetail()">✕</button>
       </div>`;
   }
 
-  panel.innerHTML = `<button class="det-close" onclick="closeDetail()">✕ Cerrar</button>${body}`;
-  // Guardar datos de series para cambio de temporada
-  if(type==='tv') panel._seriesData = item;
+  panel.innerHTML = body;
+}
+/* ═══ GLOBAL BACKGROUND ═══ */
+function setGlobalBg(url){
+  const el = $('globalBg');
+  el.style.backgroundImage = `url(${url})`;
+  el.style.opacity = '1';
+}
+function clearGlobalBg(){
+  const el = $('globalBg');
+  el.style.opacity = '0';
 }
 
-function showSeason(seriesId, sIdx){
+/* ═══ TMDB SEASON EPISODES ═══ */
+async function fetchTmdbSeason(tmdbId, seasonNum){
+  const key = `season_${tmdbId}_${seasonNum}`;
+  if(S.tmdbCache[key]) return S.tmdbCache[key];
+  try{
+    const r = await fetch(`https://api.themoviedb.org/3/tv/${tmdbId}/season/${seasonNum}?api_key=${CONFIG.tmdbKey}&language=${CONFIG.tmdbLang}`);
+    if(!r.ok) return [];
+    const d = await r.json();
+    const eps = d.episodes || [];
+    S.tmdbCache[key] = eps;
+    return eps;
+  } catch{ return []; }
+}
+
+/* ═══ BUILD EPISODE LIST HTML ═══ */
+function buildEpList(item, sIdx, tmdbEps){
+  const eps = item.seasons?.[sIdx]?.episodes || [];
+  return eps.map((ep, ei) => {
+    const te = tmdbEps[ei] || {};
+    const thumb = te.still_path ? imgUrl(te.still_path,'w300') : '';
+    const overview = te.overview || '';
+    const epTitle = ep.title || te.name || `Episodio ${ei+1}`;
+    const thumbHtml = thumb
+      ? `<img class="ep-thumb" src="${thumb}" alt="Ep ${ei+1}" loading="lazy">`
+      : `<div class="ep-thumb-ph">▶</div>`;
+    return `
+      <div class="ep-item" onclick="playEpisode('${item.id}',${sIdx},${ei})">
+        ${thumbHtml}
+        <span class="ep-num">${ei+1}</span>
+        <div class="ep-info">
+          <div class="ep-title">${epTitle}</div>
+          ${overview?`<div class="ep-overview">${overview}</div>`:''}
+        </div>
+        <button class="ep-play" onclick="event.stopPropagation();playEpisode('${item.id}',${sIdx},${ei})">▶</button>
+      </div>`;
+  }).join('');
+}
+
+async function showSeason(seriesId, sIdx, tmdbId){
   const item = S.data.series.find(x=>x.id===seriesId);
   if(!item) return;
   document.querySelectorAll(`#seasonTabs_${seriesId} .season-tab`).forEach((t,i)=>t.classList.toggle('on',i===sIdx));
-  const eps = (item.seasons[sIdx]?.episodes||[]).map((ep,ei)=>`
-    <div class="ep-item" onclick="playEpisode('${seriesId}',${sIdx},${ei})">
-      <span class="ep-num">${ei+1}</span>
-      <div class="ep-info"><div class="ep-title">${ep.title||'Episodio '+(ei+1)}</div></div>
-      <button class="ep-play" onclick="event.stopPropagation();playEpisode('${seriesId}',${sIdx},${ei})">▶</button>
-    </div>`).join('');
-  $('epList_'+seriesId).innerHTML = eps;
+  $('epList_'+seriesId).innerHTML = '<div style="padding:20px;text-align:center"><div class="spinner-ring" style="margin:auto"></div></div>';
+  const tmdbEps = tmdbId ? await fetchTmdbSeason(tmdbId, sIdx+1) : [];
+  $('epList_'+seriesId).innerHTML = buildEpList(item, sIdx, tmdbEps);
 }
 
 function closeDetail(){
   $('L-detail').classList.remove('on');
+  clearGlobalBg();
 }
 $('L-detail').addEventListener('click', e=>{ if(e.target===$('L-detail')) closeDetail(); });
 
