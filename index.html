@@ -35,7 +35,7 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 /* GLOBAL BACKGROUND (backdrop dinámico) */
 #globalBg{position:fixed;inset:0;z-index:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s,background-image .8s;pointer-events:none;}
 #globalBg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 120% 80% at 50% 0%,rgba(10,10,15,.55) 0%,rgba(10,10,15,.92) 60%,var(--bg) 100%);}
-#L-home{position:relative;z-index:1;}
+#L-home{position:fixed;inset:0;z-index:1;}
 
 /* ═══════════════════════════════════════
    CAPAS
@@ -64,7 +64,7 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 /* ═══════════════════════════════════════
    HOME
 ═══════════════════════════════════════ */
-#L-home{background:var(--bg);overflow:hidden;}
+#L-home{background:var(--bg);overflow:hidden;min-height:0;}
 
 /* NAV */
 .nav{flex-shrink:0;display:flex;align-items:center;gap:0;padding:0 24px;height:62px;background:linear-gradient(to bottom,rgba(10,10,15,.98),rgba(10,10,15,.0));position:relative;z-index:10;}
@@ -95,10 +95,16 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 .btn-logout:hover{color:var(--text);}
 
 /* SCROLL AREA */
-.home-scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:40px;}
+.home-scroll{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-bottom:40px;}
 .home-scroll::-webkit-scrollbar{width:4px;}
 .home-scroll::-webkit-scrollbar-track{background:transparent;}
 .home-scroll::-webkit-scrollbar-thumb{background:var(--s3);border-radius:4px;}
+
+/* BOTONES SUBIR/BAJAR (navegación sin mouse / TV) */
+.scroll-nav{position:absolute;right:18px;bottom:28px;display:flex;flex-direction:column;gap:10px;z-index:20;}
+.scroll-btn{width:46px;height:46px;border-radius:50%;background:rgba(28,25,41,.82);border:1px solid rgba(124,58,237,.35);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);transition:background .2s,transform .12s,border-color .2s;}
+.scroll-btn:hover,.scroll-btn:focus{background:var(--accent);border-color:var(--accent2);outline:none;transform:scale(1.06);}
+.scroll-btn:active{transform:scale(.96);}
 
 /* HERO */
 .hero{position:relative;height:420px;overflow:hidden;flex-shrink:0;margin-bottom:8px;}
@@ -326,6 +332,16 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
     <!-- CONTENIDO DINÁMICO -->
     <div id="homeSections"></div>
 
+  </div>
+
+  <!-- BOTONES SUBIR/BAJAR (TV / sin scrollbar) -->
+  <div class="scroll-nav">
+    <button class="scroll-btn" onclick="scrollHome(-1)" aria-label="Subir" title="Subir">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+    <button class="scroll-btn" onclick="scrollHome(1)" aria-label="Bajar" title="Bajar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
   </div>
 </div>
 
@@ -916,6 +932,23 @@ function showTab(tab){
 
 let searchTm;
 function onSearch(){ clearTimeout(searchTm); searchTm = setTimeout(renderSections, 280); }
+
+/* ═══════════════════════════════════════
+   SCROLL VERTICAL (botones + control remoto TV)
+═══════════════════════════════════════ */
+function scrollHome(dir){
+  const el = $('homeScroll');
+  el.scrollBy({ top: dir * Math.round(el.clientHeight * 0.8), behavior: 'smooth' });
+}
+window.addEventListener('keydown', e=>{
+  if(!$('L-home').classList.contains('on')) return;
+  if($('L-detail').classList.contains('on') || $('L-player').classList.contains('on')) return;
+  // Solo cuando nada (input/botón) tiene el foco, para no romper la navegación con el control remoto
+  const tag = document.activeElement?.tagName;
+  if(tag && tag!=='BODY' && tag!=='HTML') return;
+  if(e.key==='ArrowDown' || e.key==='PageDown'){ scrollHome(1); e.preventDefault(); }
+  else if(e.key==='ArrowUp' || e.key==='PageUp'){ scrollHome(-1); e.preventDefault(); }
+});
 
 /* ═══════════════════════════════════════
    BACK BUTTON (Android)
