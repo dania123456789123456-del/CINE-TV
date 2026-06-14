@@ -120,15 +120,18 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 
 /* SECCIONES / CARRUSELES */
 .section{padding:8px 0 0;}
-.section-header{display:flex;align-items:center;justify-content:space-between;padding:0 24px 14px;}
+.section-header{display:flex;align-items:center;gap:10px;justify-content:flex-start;padding:0 24px 14px;}
 .section-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;}
 .section-title span{color:var(--accent2);}
-.section-more{background:none;border:none;color:var(--muted);font-size:.82rem;cursor:pointer;transition:color .2s;}
+.section-count{background:var(--s2);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:2px 11px;font-size:.78rem;color:var(--muted);font-weight:600;}
+.section-more{background:none;border:none;color:var(--muted);font-size:.82rem;cursor:pointer;transition:color .2s;margin-left:auto;}
 .section-more:hover{color:var(--accent2);}
 .carousel{display:flex;gap:14px;padding:0 24px 16px;overflow-x:auto;scroll-behavior:smooth;}
 .carousel::-webkit-scrollbar{height:3px;}
 .carousel::-webkit-scrollbar-track{background:transparent;}
 .carousel::-webkit-scrollbar-thumb{background:var(--s3);border-radius:3px;}
+/* GRID: lista completa (Películas/Series/Historial/Favoritos) que crece hacia abajo */
+.grid-wrap{display:flex;flex-wrap:wrap;gap:14px 14px;padding:0 24px 24px;}
 
 /* CARDS */
 .card{flex-shrink:0;width:var(--card-w);cursor:pointer;position:relative;}
@@ -556,7 +559,7 @@ async function renderSections(){
     const series = S.data.series.filter(s=>s.title.toLowerCase().includes(q));
     const items = [...movies.map(m=>({...m,_type:'movie'})), ...series.map(s=>({...s,_type:'tv'}))];
     if(!items.length){ sec.appendChild(emptyState('🔍','Sin resultados','Intenta con otro término de búsqueda.')); return; }
-    sec.appendChild(makeSection('🔍 Resultados', items));
+    sec.appendChild(makeSection('🔍 Resultados', items, {grid:true, count:false}));
     return;
   }
 
@@ -568,12 +571,14 @@ async function renderSections(){
   }
   if(tab==='movies'){
     const movies = S.data.movies.filter(m=>m.bunny_embed).map(m=>({...m,_type:'movie'}));
-    await renderGenreRows(sec, token, movies, '🎬','Sin películas','Agrega películas a tu catálogo.');
+    if(!movies.length){ sec.appendChild(emptyState('🎬','Sin películas','Agrega películas a tu catálogo.')); return; }
+    sec.appendChild(makeSection('🎬 Películas', movies, {grid:true}));
     return;
   }
   if(tab==='series'){
     const series = S.data.series.filter(s=>s.seasons?.some(se=>se.episodes?.some(e=>e.bunny_embed))).map(s=>({...s,_type:'tv'}));
-    await renderGenreRows(sec, token, series, '📺','Sin series','Agrega series a tu catálogo.');
+    if(!series.length){ sec.appendChild(emptyState('📺','Sin series','Agrega series a tu catálogo.')); return; }
+    sec.appendChild(makeSection('📺 Series', series, {grid:true}));
     return;
   }
   if(tab==='history'){
@@ -582,7 +587,7 @@ async function renderSections(){
       const found = h.type==='movie' ? S.data.movies.find(m=>m.id===h.id) : S.data.series.find(s=>s.id===h.id);
       return found ? {...found, _type: h.type==='movie'?'movie':'tv'} : null;
     }).filter(Boolean);
-    sec.appendChild(makeSection('🕐 Historial', items, true));
+    sec.appendChild(makeSection('🕐 Historial', items, {grid:true}));
   }
   if(tab==='favs'){
     if(!S.favs.length){ sec.appendChild(emptyState('⭐','Sin favoritos','Guarda tus películas y series favoritas.')); return; }
@@ -591,7 +596,7 @@ async function renderSections(){
       const s = S.data.series.find(x=>x.id===id); if(s) return {...s,_type:'tv'};
       return null;
     }).filter(Boolean);
-    sec.appendChild(makeSection('⭐ Favoritos', items, true));
+    sec.appendChild(makeSection('⭐ Favoritos', items, {grid:true}));
   }
 }
 
@@ -619,12 +624,13 @@ function emptyState(icon, title, sub){
 }
 
 let cardSeq = 0;
-function makeSection(title, items, grid=false){
+function makeSection(title, items, opts={}){
   const wrap = document.createElement('div');
   wrap.className = 'section';
-  wrap.innerHTML = `<div class="section-header"><h2 class="section-title">${title}</h2></div>`;
+  const countHtml = opts.count!==false ? `<span class="section-count">${items.length}</span>` : '';
+  wrap.innerHTML = `<div class="section-header"><h2 class="section-title">${title}</h2>${countHtml}</div>`;
   const car = document.createElement('div');
-  car.className = 'carousel';
+  car.className = opts.grid ? 'grid-wrap' : 'carousel';
   items.forEach(item=>{
     const uid = 'c'+(cardSeq++);
     car.appendChild(makeCard(item, uid));
