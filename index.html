@@ -70,6 +70,17 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 .nav{flex-shrink:0;display:flex;align-items:center;gap:0;padding:0 24px;height:62px;background:linear-gradient(to bottom,rgba(10,10,15,.98),rgba(10,10,15,.0));position:relative;z-index:10;}
 .nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.3px;margin-right:32px;cursor:pointer;}
 .nav-logo span{color:var(--accent2);}
+
+/* BRAND / LOGO */
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-icon{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;box-shadow:0 4px 14px var(--glow);}
+.brand-icon svg{width:18px;height:18px;}
+.brand-text{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;letter-spacing:-.3px;}
+.brand-text span{color:var(--accent2);}
+.brand-lg{justify-content:center;gap:14px;margin-bottom:8px;}
+.brand-lg .brand-icon{width:54px;height:54px;border-radius:15px;}
+.brand-lg .brand-icon svg{width:30px;height:30px;}
+.brand-lg .brand-text{font-size:2rem;}
 .nav-tabs{display:flex;gap:4px;flex:1;}
 .nav-tab{background:none;border:none;color:var(--muted);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:500;padding:8px 14px;border-radius:8px;cursor:pointer;transition:color .2s,background .2s;}
 .nav-tab:hover{color:var(--text);background:var(--s2);}
@@ -240,7 +251,17 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 <!-- ═══ LOGIN ═══ -->
 <div id="L-login" class="layer on">
   <div class="login-wrap">
-    <div class="login-logo">MI <span>CINE</span></div>
+    <div class="brand brand-lg">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/>
+          <path d="m6.2 5.3 3.1 3.9"/>
+          <path d="m12.4 3.4 3.1 4"/>
+          <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>
+        </svg>
+      </div>
+      <div class="brand-text">MI <span>CINE</span></div>
+    </div>
     <p class="login-sub">Tu plataforma privada de entretenimiento</p>
     <div class="login-box">
       <div class="field">
@@ -261,7 +282,17 @@ html,body{width:100%;height:100%;background:var(--bg);color:var(--text);font-fam
 <div id="L-home" class="layer">
   <!-- NAV -->
   <nav class="nav">
-    <div class="nav-logo">MI <span>CINE</span></div>
+    <div class="brand nav-logo" onclick="showTab('all')" style="cursor:pointer">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/>
+          <path d="m6.2 5.3 3.1 3.9"/>
+          <path d="m12.4 3.4 3.1 4"/>
+          <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>
+        </svg>
+      </div>
+      <div class="brand-text">MI <span>CINE</span></div>
+    </div>
     <div class="nav-tabs">
       <button class="nav-tab on" onclick="showTab('all')">Inicio</button>
       <button class="nav-tab" onclick="showTab('movies')">Películas</button>
@@ -408,13 +439,55 @@ async function fetchTmdb(type, tmdbId){
   } catch{ return null; }
 }
 
+/* Catálogo de géneros TMDB (para categorías en Inicio/Películas/Series) */
+const GENRES = { movie:{}, tv:{} };
+const GENRE_ICONS = {
+  'Acción':'💥','Aventura':'🗺️','Animación':'🎨','Comedia':'😂','Crimen':'🕵️',
+  'Documental':'🎥','Drama':'🎭','Familia':'👨‍👩‍👧','Fantasía':'🪄','Historia':'📜',
+  'Terror':'👻','Música':'🎵','Misterio':'🔍','Romance':'💕','Ciencia ficción':'🚀',
+  'Película de TV':'📺','Suspense':'⚡','Bélica':'⚔️','Western':'🤠',
+  '& Familia':'👨‍👩‍👧','Otros':'🎬'
+};
+function genreIcon(name){ return GENRE_ICONS[name] || '🎬'; }
+async function loadGenres(){
+  try{
+    const [mg, tg] = await Promise.all([
+      fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${CONFIG.tmdbKey}&language=${CONFIG.tmdbLang}`).then(r=>r.json()),
+      fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=${CONFIG.tmdbKey}&language=${CONFIG.tmdbLang}`).then(r=>r.json())
+    ]);
+    (mg.genres||[]).forEach(g=>GENRES.movie[g.id]=g.name);
+    (tg.genres||[]).forEach(g=>GENRES.tv[g.id]=g.name);
+  } catch{}
+}
+
+/* Agrupa items por género TMDB (un item puede aparecer en varias filas) */
+async function groupByGenre(items){
+  const groups = {};
+  await Promise.all(items.map(async item=>{
+    const tmdbType = item._type==='movie' ? 'movie' : 'tv';
+    const td = item.tmdb_id ? await fetchTmdb(tmdbType, item.tmdb_id) : null;
+    const genres = td?.genres || [];
+    if(!genres.length){
+      (groups['Otros'] = groups['Otros']||[]).push(item);
+      return;
+    }
+    genres.forEach(g=>{
+      (groups[g.name] = groups[g.name]||[]).push(item);
+    });
+  }));
+  return groups;
+}
+
 /* ═══════════════════════════════════════
    INIT
 ═══════════════════════════════════════ */
 async function initApp(){
   show('L-home');
   try{
-    const r = await fetch(CONFIG.jsonUrl + '?v=' + Date.now());
+    const [r] = await Promise.all([
+      fetch(CONFIG.jsonUrl + '?v=' + Date.now()),
+      loadGenres()
+    ]);
     S.data = await r.json();
   } catch(e){
     toast('⚠ No se pudo cargar data.json');
@@ -469,7 +542,9 @@ async function renderHero(){
 }
 
 /* SECTIONS */
-function renderSections(){
+let renderToken = 0;
+async function renderSections(){
+  const token = ++renderToken;
   const tab = S.currentTab;
   const sec = $('homeSections');
   sec.innerHTML = '';
@@ -479,17 +554,27 @@ function renderSections(){
   if(q){
     const movies = S.data.movies.filter(m=>m.title.toLowerCase().includes(q));
     const series = S.data.series.filter(s=>s.title.toLowerCase().includes(q));
-    sec.appendChild(makeSection('🔍 Resultados', [...movies.map(m=>({...m,_type:'movie'})), ...series.map(s=>({...s,_type:'tv'}))]));
+    const items = [...movies.map(m=>({...m,_type:'movie'})), ...series.map(s=>({...s,_type:'tv'}))];
+    if(!items.length){ sec.appendChild(emptyState('🔍','Sin resultados','Intenta con otro término de búsqueda.')); return; }
+    sec.appendChild(makeSection('🔍 Resultados', items));
     return;
   }
 
-  if(tab==='all' || tab==='movies'){
-    const movies = S.data.movies.filter(m=>m.bunny_embed);
-    if(movies.length) sec.appendChild(makeSection('🎬 Películas', movies.map(m=>({...m,_type:'movie'}))));
+  if(tab==='all'){
+    const movies = S.data.movies.filter(m=>m.bunny_embed).map(m=>({...m,_type:'movie'}));
+    const series = S.data.series.filter(s=>s.seasons?.some(se=>se.episodes?.some(e=>e.bunny_embed))).map(s=>({...s,_type:'tv'}));
+    await renderGenreRows(sec, token, [...movies, ...series], '🎬','Sin contenido','Agrega películas y series a tu catálogo.');
+    return;
   }
-  if(tab==='all' || tab==='series'){
-    const series = S.data.series.filter(s=>s.seasons?.some(se=>se.episodes?.some(e=>e.bunny_embed)));
-    if(series.length) sec.appendChild(makeSection('📺 Series', series.map(s=>({...s,_type:'tv'}))));
+  if(tab==='movies'){
+    const movies = S.data.movies.filter(m=>m.bunny_embed).map(m=>({...m,_type:'movie'}));
+    await renderGenreRows(sec, token, movies, '🎬','Sin películas','Agrega películas a tu catálogo.');
+    return;
+  }
+  if(tab==='series'){
+    const series = S.data.series.filter(s=>s.seasons?.some(se=>se.episodes?.some(e=>e.bunny_embed))).map(s=>({...s,_type:'tv'}));
+    await renderGenreRows(sec, token, series, '📺','Sin series','Agrega series a tu catálogo.');
+    return;
   }
   if(tab==='history'){
     if(!S.history.length){ sec.appendChild(emptyState('🕐','Aún no has visto nada','Empieza a explorar películas y series.')); return; }
@@ -510,6 +595,22 @@ function renderSections(){
   }
 }
 
+/* Renderiza filas por categoría (género TMDB), con scroll horizontal por fila */
+async function renderGenreRows(sec, token, items, emptyIcon, emptyTitle, emptySub){
+  if(!items.length){ sec.appendChild(emptyState(emptyIcon, emptyTitle, emptySub)); return; }
+  const loading = document.createElement('div');
+  loading.innerHTML = `<div style="padding:50px 24px;text-align:center"><div class="spinner-ring" style="margin:auto"></div></div>`;
+  sec.appendChild(loading);
+  const groups = await groupByGenre(items);
+  if(token !== renderToken) return; // se cambió de pestaña/búsqueda mientras cargaba
+  loading.remove();
+  const order = Object.keys(groups).sort((a,b)=> (groups[b].length - groups[a].length) || a.localeCompare(b,'es'));
+  if(!order.length){ sec.appendChild(emptyState(emptyIcon, emptyTitle, emptySub)); return; }
+  order.forEach(name=>{
+    sec.appendChild(makeSection(`${genreIcon(name)} ${name}`, groups[name]));
+  });
+}
+
 function emptyState(icon, title, sub){
   const d = document.createElement('div');
   d.className = 'empty-state';
@@ -517,23 +618,26 @@ function emptyState(icon, title, sub){
   return d;
 }
 
+let cardSeq = 0;
 function makeSection(title, items, grid=false){
   const wrap = document.createElement('div');
   wrap.className = 'section';
   wrap.innerHTML = `<div class="section-header"><h2 class="section-title">${title}</h2></div>`;
   const car = document.createElement('div');
   car.className = 'carousel';
-  items.forEach(item=>{ car.appendChild(makeCard(item)); });
+  items.forEach(item=>{
+    const uid = 'c'+(cardSeq++);
+    car.appendChild(makeCard(item, uid));
+    enrichCard(item, uid);
+  });
   wrap.appendChild(car);
-  // Enrich cards with TMDB async
-  items.forEach(item=>enrichCard(item));
   return wrap;
 }
 
-function makeCard(item){
+function makeCard(item, uid){
   const div = document.createElement('div');
   div.className = 'card';
-  div.id = 'card_'+item.id;
+  div.id = 'card_'+uid;
   div.addEventListener('mouseenter', ()=>{
     if(div.dataset.backdrop) setGlobalBg(div.dataset.backdrop);
   });
@@ -557,11 +661,11 @@ function makeCard(item){
   return div;
 }
 
-async function enrichCard(item){
+async function enrichCard(item, uid){
   const type = item._type==='movie' ? 'movie' : 'tv';
   const td = item.tmdb_id ? await fetchTmdb(type, item.tmdb_id) : null;
   if(!td) return;
-  const card = $('card_'+item.id);
+  const card = $('card_'+uid);
   if(!card) return;
   const img = td.poster_path ? imgUrl(td.poster_path) : '';
   const ph = card.querySelector('.card-placeholder');
