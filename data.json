@@ -2,36 +2,760 @@
   "movies": [
     {
       "id": "m1",
-      "title": "Avatar: Fuego y ceniza",
-      "tmdb_id": 83533,
+      "title": "Drácula",
+      "tmdb_id": 1246049,
       "year": 2025,
-      "bunny_embed": "https://player.mediadelivery.net/embed/670493/1accea98-fdad-4f42-ba56-d441abe80381?autoplay=true&loop=false&muted=true&preload=true&responsive=true"
+      "bunny_embed": "Link"
     },
     {
       "id": "m2",
-      "title": "El León de Narnia",
-      "tmdb_id": 12345,
-      "year": 2024,
-      "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/OTRO_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+      "title": "El ciempiés humano",
+      "tmdb_id": 37169,
+      "year": 2009,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m3",
+      "title": "El ciempiés humano 2",
+      "tmdb_id": 74997,
+      "year": 2011,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m4",
+      "title": "El ciempiés humano 3",
+      "tmdb_id": 94365,
+      "year": 2015,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m5",
+      "title": "El precio del poder",
+      "tmdb_id": 111,
+      "year": 1983,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m6",
+      "title": "Barbie",
+      "tmdb_id": 346698,
+      "year": 2023,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m7",
+      "title": "Ice Age: La edad de hielo",
+      "tmdb_id": 425,
+      "year": 2002,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m8",
+      "title": "Ice Age 2: El deshielo",
+      "tmdb_id": 950,
+      "year": 2006,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m9",
+      "title": "Ice Age 3: El origen de los dinosaurios",
+      "tmdb_id": 8355,
+      "year": 2009,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m10",
+      "title": "Ice Age 4: La formación de los continentes",
+      "tmdb_id": 57800,
+      "year": 2012,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m11",
+      "title": "Ice Age: El gran cataclismo",
+      "tmdb_id": 278154,
+      "year": 2016,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m12",
+      "title": "Chappie",
+      "tmdb_id": 198184,
+      "year": 2015,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m13",
+      "title": "Acero puro",
+      "tmdb_id": 39254,
+      "year": 2011,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m14",
+      "title": "Who Am I: Ningún sistema es seguro",
+      "tmdb_id": 284427,
+      "year": 2014,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m15",
+      "title": "La ira de Dios",
+      "tmdb_id": 880313,
+      "year": 2022,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m16",
+      "title": "Toda una vida en un año",
+      "tmdb_id": 447362,
+      "year": 2020,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m17",
+      "title": "Avatar",
+      "tmdb_id": 19995,
+      "year": 2009,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m18",
+      "title": "Avatar: El sentido del agua",
+      "tmdb_id": 76600,
+      "year": 2022,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m19",
+      "title": "Avatar: Fuego y ceniza",
+      "tmdb_id": 83533,
+      "year": 2025,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m20",
+      "title": "King Kong",
+      "tmdb_id": 254,
+      "year": 2005,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m21",
+      "title": "Dinosaurio",
+      "tmdb_id": 10567,
+      "year": 2000,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m22",
+      "title": "Michael",
+      "tmdb_id": 936075,
+      "year": 2026,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m23",
+      "title": "Hoppers",
+      "tmdb_id": 1327819,
+      "year": 2026,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m24",
+      "title": "Intercambiados",
+      "tmdb_id": 1007757,
+      "year": 2026,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m25",
+      "title": "Black Adam",
+      "tmdb_id": 436270,
+      "year": 2022,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m26",
+      "title": "Intocable",
+      "tmdb_id": 77338,
+      "year": 2011,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m27",
+      "title": "Dragon Ball Z: ¡Arde! Una ardiente, intensa y super feroz batalla",
+      "tmdb_id": 34433,
+      "year": 1993,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m28",
+      "title": "Dragon Ball Z꞉ ¡El dúo peligroso! Los súper guerreros nunca duermen",
+      "tmdb_id": 44251,
+      "year": 1994,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m29",
+      "title": "Ídolos",
+      "tmdb_id": 1357449,
+      "year": 2026,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m30",
+      "title": "Chavín de Huántar, el rescate del siglo",
+      "tmdb_id": 1365302,
+      "year": 2025,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m31",
+      "title": "F1 la película",
+      "tmdb_id": 911430,
+      "year": 2025,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m32",
+      "title": "Moonwalker",
+      "tmdb_id": 13192,
+      "year": 1988,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m33",
+      "title": "Warcraft: El origen",
+      "tmdb_id": 68735,
+      "year": 2016,
+      "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m34",
+      "title": "20 años no importan",
+      "tmdb_id": 173185,
+      "year": 2013,
+      "bunny_embed": "Pegar link"
     }
   ],
   "series": [
     {
       "id": "s1",
-      "title": "Breaking Bad",
-      "tmdb_id": 1396,
+      "title": "Inazuma Eleven",
+      "tmdb_id": 42912,
       "year": 2008,
       "seasons": [
         {
           "title": "Temporada 1",
           "episodes": [
             {
-              "title": "Piloto",
-              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP1_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+              "title": "¡Juguemos al fútbol!",
+              "bunny_embed": "Pegar link"
             },
             {
-              "title": "Gato en la azotea",
-              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP2_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+              "title": "¡Aquí está la Royal Academy!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Busquemos la Técnica Definitiva!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Ha llegado el dragón!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¿Dónde está el cuaderno secreto?",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Este es el Trampolín relámpago!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo en la Ribera!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Los temibles futbolistas ciborg!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Levanta, Willy!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "El espía de la Royal Academy",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Encontremos un entrenador!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Final contra la Royal Academy! 1ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Final contra la Royal Academy! 2ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El equipo legendario!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Por fin comienza el torneo nacional!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Venzamos a la escuela ninja!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La decisión de Jude!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Romped la muralla infinita!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Vuelve un genio!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Técnica definitiva: El Triángulo Z!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Un feroz duelo con el Kirkwood!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Superaré la mano celestial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "El desafío de un Dios",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "A la concentración",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El partido definitivo! 1ª parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El partido definitivo! 2ª parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Qué vienen los extraterrestres!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La partida del Raimon!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Derrotemos a los once de negro!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La amenaza de la Academia Alius!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Buscando al delantero legendario!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El príncipe de la nieve!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¿Quién es el delantero estrella?",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La academia Alius ataca!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El ataque de Épsilon!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La fuerza oculta!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El contraataque de la Royal! 1ª parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El contraataque de la Royal! 2ª parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La última Ventisca guiverno!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Erik en apuros!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La trampa de Dvalin!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Un partido al rojo vivo! ¡El gafe del Épsilon!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La ultra supertécnica del abuelo!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La otra Mano mágica!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Génesis! ¡El equipo más fuerte!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La prueba del capitán!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Gran duelo en los mares del Sur!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El delantero de fuego!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El fútbol ritmo! ¡Qué locura!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El rugido del Súper puño invencible!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El nuevo Épsilon contraataca!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El regreso del fuego!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El equipo Diamante, la niebla helada!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Byron Love, el salvador!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El nuevo reto de Mark Evans!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo! ¡Mark contra Axel!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Caos, un equipo prodigioso!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La explosión de la Ventisca de fuego!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Por fin, la Academia Alius!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La autentica naturaleza de la Academia Alius!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El partido definitivo! ¡Genesis! 1ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El partido definitivo! ¡Genesis! 2ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La amenaza continúa!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo! ¡Raimon contra Raimon!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La Ultra Supertécnica de la amistad!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El camino al mejor equipo del mundo, la ventisca!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El camino al mejor equipo del mundo, el fuego!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "La reunión de la selección japonesa",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "El nacimiento de Inazuma Japón",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El entrenador maldito!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Se levanta el telón! ¡El reto del mundial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Remontemos a los Big Waves!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Los leones del desierto! ¡Unos impetuosos guerreros!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El despertar de Austin!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Un gran duelo!¡Mark contra Archer!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¿Cambio de selección? ¡El mayor de los desafios!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El reto definitivo! ¡La selección de Percy Travis contra la de Lina Schiller!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El plan de Camelia para una ultra supertécnica!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La decisión de Axel!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "El último partido",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Los más fuertes de Asia! ¡Los dragones de fuego!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Una estrategia insuperable! ¡La presión perfecta!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Levanta, capitán!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Consigamos el pasaporte al mundial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Ya está aquí el torneo mundial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Que impresión! ¡Esto es jugar a nivel mundial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Knights of Queen, los caballeros de Inglaterra!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Mi propia técnica, por fin terminada!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Superaré la Manos Infinitas!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La maldición de la Royal! 1ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La maldición de la Royal! 2ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Alucinante! ¡Hay dos Jude!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El mayor de los choques! ¡Pingüino contra pingüino!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La fortaleza inexpugnable!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Una situación desesperada! ¿La derrota de Inazuma Japón?",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El secreto de Cammy!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El último partido de Erik!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Amistad al máximo! ¡Erik contra Mark!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La resolución del Fénix!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Un encuentro con Kappas ¡Qué maravilla!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Qué choque! ¡Tigre y halcón!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Recuerdos recuperados! ¡La verdad sobre Cammy!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡A un paso de la fase final! ¡La decisión de Paolo!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La Mejor de las supertácticas! ¡El Contrataque Cattenacchio!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo explosivo! ¡Paolo contra Mark!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Ray Dark y su último reto!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El último cuaderno del abuelo!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La leyenda de Liocott!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El Sky Team!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El Dark Team!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El Ángel Oscuro, la llegada del rey de los demonios!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "La oscuridad de Os Reis",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La conspiración de Zoolan Rice!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Inazuma Japón contra Os Reis!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El contraataque de Os Reis!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡La maravilla de The Little Giants!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El ataque de los humanos reforzados definitivos!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El aterrador Zoolan Team!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El más fuerte de los rivales!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Entrenamiento amistoso especial con Paolo!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Once lemas para ganar el mundial!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡El duelo final de Inazuma Japón!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo en la cumbre: The Little Giants! 1ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Duelo en la cumbre: The Little Giants! 2ª Parte",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Al fin la conclusión! ¡Los mejores del mundo!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Lágrimas en la graduación!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Un saque hacia el mañana!",
+              "bunny_embed": "Pegar link"
             }
           ]
         },
@@ -39,8 +763,151 @@
           "title": "Temporada 2",
           "episodes": [
             {
-              "title": "Sin salida",
-              "bunny_embed": "https://player.mediadelivery.net/embed/TU_LIBRARY_ID/EP3_VIDEO_ID?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+              "title": "¡El nuevo viento que sopla en el Raimon!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Esto es un Espíritu Guerrero!",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        },
+        {
+          "title": "Temporada 3",
+          "episodes": [
+            {
+              "title": "¿¡Ha Desaparecido el Fútbol!?",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "¡Arion Viaja En El Tiempo!",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": "Las Hermanas",
+      "tmdb_id": 134675,
+      "year": 2022,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "Episodio 1",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Episodio 2",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": "Yo soy Betty, la fea",
+      "tmdb_id": 16286,
+      "year": 1999,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "La fea más bella",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "El primer día de Betty en Ecomoda",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": "Pedro El Escamoso",
+      "tmdb_id": 132908,
+      "year": 2001,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "Episodio 1",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Episodio 2",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": "Parque Prehistórico",
+      "tmdb_id": 788,
+      "year": 2006,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "Episodio 1",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Episodio 2",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": "Pokémon (Pokemon)",
+      "tmdb_id": 60572,
+      "year": 1997,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "¡Pokémon, te elijo a ti!",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Emergencia Pokémon",
+              "bunny_embed": "Pegar link"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": "Dejémonos de Vargas",
+      "tmdb_id": 206164,
+      "year": 2022,
+      "seasons": [
+        {
+          "title": "Temporada 1",
+          "episodes": [
+            {
+              "title": "Episodio 1",
+              "bunny_embed": "Pegar link"
+            },
+            {
+              "title": "Episodio 2",
+              "bunny_embed": "Pegar link"
             }
           ]
         }
