@@ -360,15 +360,18 @@
               "title": "Temporada 2",
               "tmdb_season": 1,
               "episodes": [
-            {    
+            { 
+              "episode_number": 27,
               "title": "¡Qué vienen los extraterrestres!",
               "bunny_embed": "Pegar link"
             },
             {
+              "episode_number": 28,
               "title": "¡La partida del Raimon!",
               "bunny_embed": "Pegar link"
             },
             {
+              "episode_number": 29,
               "title": "¡Derrotemos a los once de negro!",
               "bunny_embed": "Pegar link"
             },
