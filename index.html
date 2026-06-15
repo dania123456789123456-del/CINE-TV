@@ -842,7 +842,7 @@ function buildEpList(item, sIdx, tmdbEps){
     return `
       <div class="ep-item" onclick="playEpisode('${item.id}',${sIdx},${ei})">
         ${thumbHtml}
-        <span class="ep-num">${ei+1}</span>
+        <span class="ep-num">${ep.episode_number ?? ei+1}</span>
         <div class="ep-info">
           <div class="ep-title">${epTitle}</div>
           ${overview?`<div class="ep-overview">${overview}</div>`:''}
