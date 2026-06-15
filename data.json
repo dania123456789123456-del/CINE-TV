@@ -248,6 +248,7 @@
       "seasons": [
         {
           "title": "Temporada 1",
+          "tmdb_season": 1,
           "episodes": [
             {
               "title": "¡Juguemos al fútbol!",
@@ -352,8 +353,14 @@
             {
               "title": "¡El partido definitivo! 2ª parte",
               "bunny_embed": "Pegar link"
-            },
+            }
+            ] 
+            }, 
             {
+              "title": "Temporada 2",
+              "tmdb_season": 1,
+              "episodes": [
+            {    
               "title": "¡Qué vienen los extraterrestres!",
               "bunny_embed": "Pegar link"
             },
@@ -755,33 +762,7 @@
             },
             {
               "title": "¡Un saque hacia el mañana!",
-              "bunny_embed": "Pegar link"
-            }
-          ]
-        },
-        {
-          "title": "Temporada 2",
-          "episodes": [
-            {
-              "title": "¡El nuevo viento que sopla en el Raimon!",
-              "bunny_embed": "Pegar link"
-            },
-            {
-              "title": "¡Esto es un Espíritu Guerrero!",
-              "bunny_embed": "Pegar link"
-            }
-          ]
-        },
-        {
-          "title": "Temporada 3",
-          "episodes": [
-            {
-              "title": "¿¡Ha Desaparecido el Fútbol!?",
-              "bunny_embed": "Pegar link"
-            },
-            {
-              "title": "¡Arion Viaja En El Tiempo!",
-              "bunny_embed": "Pegar link"
+              "bunny_embed": "Pegar link" 
             }
           ]
         }
