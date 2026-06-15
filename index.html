@@ -832,7 +832,8 @@ async function fetchTmdbSeason(tmdbId, seasonNum){
 function buildEpList(item, sIdx, tmdbEps){
   const eps = item.seasons?.[sIdx]?.episodes || [];
   return eps.map((ep, ei) => {
-    const te = tmdbEps[ei] || {};
+    const epNum = ep.episode_number ?? (ei + 1);
+    const te = tmdbEps.find(t => t.episode_number === epNum) || tmdbEps[ei] || {};
     const thumb = te.still_path ? imgUrl(te.still_path,'w300') : '';
     const overview = te.overview || '';
     const epTitle = ep.title || te.name || `Episodio ${ei+1}`;
