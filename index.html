@@ -773,7 +773,8 @@ async function openDetail(id, type){
   } else {
     const seasons = item.seasons || [];
     const seasonTabs = seasons.map((s,i)=>`<button class="season-tab ${i===0?'on':''}" onclick="showSeason('${id}',${i},${item.tmdb_id||'null'})">${s.title||'Temporada '+(i+1)}</button>`).join('');
-    const tmdbSeason1Eps = item.tmdb_id ? await fetchTmdbSeason(item.tmdb_id, 1) : [];
+    const firstTmdbSeasonNum = seasons[0]?.tmdb_season ?? 1;
+    const tmdbSeason1Eps = item.tmdb_id ? await fetchTmdbSeason(item.tmdb_id, firstTmdbSeasonNum) : [];
     const firstEps = buildEpList(item, 0, tmdbSeason1Eps);
     body = `
       <div class="det-backdrop" style="${bdStyle}"></div>
@@ -856,7 +857,8 @@ async function showSeason(seriesId, sIdx, tmdbId){
   if(!item) return;
   document.querySelectorAll(`#seasonTabs_${seriesId} .season-tab`).forEach((t,i)=>t.classList.toggle('on',i===sIdx));
   $('epList_'+seriesId).innerHTML = '<div style="padding:20px;text-align:center"><div class="spinner-ring" style="margin:auto"></div></div>';
-  const tmdbEps = tmdbId ? await fetchTmdbSeason(tmdbId, sIdx+1) : [];
+  const tmdbSeasonNum = item.seasons?.[sIdx]?.tmdb_season ?? (sIdx+1);
+  const tmdbEps = tmdbId ? await fetchTmdbSeason(tmdbId, tmdbSeasonNum) : [];
   $('epList_'+seriesId).innerHTML = buildEpList(item, sIdx, tmdbEps);
 }
 
