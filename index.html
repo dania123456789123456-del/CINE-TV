@@ -930,6 +930,7 @@ function showTab(tab){
   document.querySelectorAll('.nav-tab')[idx]?.classList.add('on');
   const heroBox = $('heroBox');
   heroBox.style.display = (tab==='all') ? '' : 'none';
+  $('homeScroll').scrollTop = 0;   // ← ESTA ES LA LÍNEA NUEVA
   renderSections();
 }
 
