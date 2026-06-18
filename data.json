@@ -237,6 +237,13 @@
       "tmdb_id": 173185,
       "year": 2013,
       "bunny_embed": "Pegar link"
+    },
+    {
+      "id": "m35",
+      "title": "The Karate Kid",
+      "tmdb_id": 38575,
+      "year": 2010,
+      "bunny_embed": "https://player.mediadelivery.net/embed/670493/6b2d095f-50d7-4eb5-984b-901e6837a9a8?autoplay=true&loop=false&muted=true&preload=true&responsive=true"
     }
   ],
   "series": [
