@@ -244,7 +244,35 @@
       "tmdb_id": 38575,
       "year": 2010,
       "bunny_embed": "https://player.mediadelivery.net/embed/670493/6b2d095f-50d7-4eb5-984b-901e6837a9a8?autoplay=true&loop=false&muted=true&preload=true&responsive=true"
-    }
+    },
+    {
+  "id": "m36",
+  "title": "Toy Story",
+  "tmdb_id": 862,
+  "year": 1995,
+  "bunny_embed": "Pegar link"
+},
+{
+  "id": "m37",
+  "title": "Toy Story 2",
+  "tmdb_id": 863,
+  "year": 1999,
+  "bunny_embed": "Pegar link"
+},
+{
+  "id": "m38",
+  "title": "Toy Story 3",
+  "tmdb_id": 10193,
+  "year": 2010,
+  "bunny_embed": "Pegar link"
+},
+{
+  "id": "m39",
+  "title": "Toy Story 4",
+  "tmdb_id": 301528,
+  "year": 2019,
+  "bunny_embed": "https://player.mediadelivery.net/embed/670493/a17cfd7c-4b89-4e76-80c4-7abc258e6067?autoplay=true&loop=false&muted=true&preload=true&responsive=true"
+}
   ],
   "series": [
     {
